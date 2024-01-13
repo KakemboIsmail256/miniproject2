@@ -1,0 +1,16 @@
+package main
+
+import (
+    "fmt"
+    "github.com/pygo/wire/wire-runtime/golang/python"
+)
+
+func main() {
+    python := python.Must(python.Import("speech_recognition_with_danger_detection"))
+    detect_danger_in_voice := python.Must(python.GetAttr(python, "detect_danger_in_voice"))
+
+    audio_file := "path_to_audio_file.wav"
+    detect_danger_in_voice(audio_file)
+
+    fmt.Println("Done")
+}
